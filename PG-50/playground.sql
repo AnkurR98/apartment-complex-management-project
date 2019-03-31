@@ -1,0 +1,32 @@
+-- Stored Procedure
+
+DELIMITER //
+
+CREATE PROCEDURE apartments.check_insert(
+    IN BLOCK VARCHAR(5),
+    IN APTNUM VARCHAR(5),
+    OUT RESULT INT
+)
+BEGIN
+	IF EXISTS(SELECT 1 FROM RESIDENT WHERE PREFERRED_BLOCK = BLOCK AND PREFERRED_APT = APTNUM) THEN
+    	SET RESULT = -1;
+    ELSE
+    	SET RESULT = 1;
+    END IF;
+END//
+
+DELIMITER ;
+
+
+-- Database Trigger
+
+DELIMITER //
+
+CREATE TRIGGER resident_on_delete
+AFTER DELETE ON resident 
+FOR EACH ROW
+    BEGIN
+        INSERT INTO formerresidents(RES_ID, NAME) VALUES (OLD.RES_ID, OLD.FULLNAME);
+    END; //
+
+DELIMITER ;
