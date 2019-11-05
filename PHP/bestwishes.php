@@ -2,7 +2,7 @@
 
 $resid = $_GET['resid'];
 
-$conn = new mysqli("localhost","root","","apartments");
+include("../Assets/dbconnect.php");
 
 $sql = "SELECT * FROM RESIDENT WHERE RES_ID = '$resid'";
 

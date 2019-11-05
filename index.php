@@ -1,7 +1,8 @@
 <?php 
     session_start();
     error_reporting(E_ALL & ~E_NOTICE);
-    $conn = new mysqli("localhost","root","","apartments");
+    include("./Assets/dbconnect.php");
+    //$conn = new mysqli("localhost","root","admin","apartments");
     if($_SERVER['REQUEST_METHOD'] == 'POST')    {
         $querybhk = $_POST['bhks'];
         $_SESSION['querybhk'] = $querybhk;
@@ -23,6 +24,9 @@
 <head>
     <link href="Assets/CSS/bootstrap.css" rel="stylesheet">
     <link href="Assets/CSS/animate.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>RESIDENTIAL COMPLEX MANAGEMENT</title>
 </head>
 <style>
@@ -89,12 +93,15 @@
                                 ?>
                                 <p class="card-text">Showing results for <?php echo $_SESSION['querybhk'];?> BHK specification</p>
                                 <p class="card-text">Query returned <?php echo $resultcount;?> vacant flats with your desired specification</p>
+                                
                                 <p class="card-text">
                                     <table class="table table-dark">
-                                        <tr><th>BLOCK</th><th>APARTMENT NUMBER</th><th>BHK SPECIFICATION</th></tr>
+                                        <tr><th>BLOCK</th><th>APARTMENT NUMBER</th><th>BHK SPECIFICATION</th><th>FLOOR</th></tr>
                                         <?php
                                             while($row = $result->fetch_assoc())    {
-                                                echo "<tr><td>".$row['BLOCK']."</td><td>".$row['APT_NUM']."</td><td>".$row['BHK']."</td></tr>";
+                                                $digit = intdiv($row['APT_NUM'], 100);
+                                                $digit = $digit == 0 ? "G" : $digit;
+                                                echo "<tr><td>".$row['BLOCK']."</td><td>".$row['APT_NUM']."</td><td>".$row['BHK']."</td><td>".$digit."</td></tr>";
                                             }
                                         ?>
                                     </table>
@@ -118,6 +125,7 @@
         window.history.replaceState( null, null, window.location.href );
     }
 </script>
+
 
 </body>
 

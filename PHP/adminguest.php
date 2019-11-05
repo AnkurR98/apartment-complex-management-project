@@ -6,7 +6,7 @@ $uname = $_SESSION["username"];
 date_default_timezone_set('Asia/Kolkata');
 ?>
 <?php 
-$conn = new mysqli("localhost","root","","apartments");
+include("../Assets/dbconnect.php");
     if($_SERVER['REQUEST_METHOD'] == 'POST')    {
         // echo $_POST['Toggler']."   ".$_POST['Guest_Id'];
         if($_POST['Toggler'] == 'Drop') {

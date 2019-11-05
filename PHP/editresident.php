@@ -7,7 +7,7 @@
     // echo $resid;
     $mraf = $mrsaf = $msaf = "";
 
-    $conn = new mysqli("localhost","root","","apartments");
+    include("../Assets/dbconnect.php");
     $sql = "SELECT * FROM RESIDENT WHERE RES_ID = '$resid'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();

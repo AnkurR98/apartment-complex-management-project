@@ -44,11 +44,11 @@
         $password = "";
         $dbName = "apartments";
 
-        $conn = new mysqli($hostName,$userName,$password,$dbName);
+        include("../Assets/dbconnect.php");
 
         if($conn->connect_error)
             echo("lolwut");
-            $sql = "CALL check_insert('$apt_block','$apt_num',@result)";
+        $sql = "CALL check_insert('$apt_block','$apt_num',@result)";
 
         $conn->query($sql);
 

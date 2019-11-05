@@ -6,7 +6,7 @@
     $password = "";
     $dbName = "apartments";
 
-    $conn = new mysqli($hostName, $userName, $password, $dbName);
+    include("../Assets/dbconnect.php");
 
     date_default_timezone_set('Asia/Kolkata');
     $t = time();

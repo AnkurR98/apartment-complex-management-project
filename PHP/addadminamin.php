@@ -3,7 +3,7 @@
     error_reporting(E_ALL & ~E_NOTICE);
     $_SESSION['Email'] = "";
     $_SESSION['Name'] = "";
-    $conn = new mysqli("localhost","root","","apartments");
+    include("../Assets/dbconnect.php");
     if($_SERVER['REQUEST_METHOD'] == 'POST')    {
         $name = $_POST['Name'];
         $email = $_POST['Email'];

@@ -4,7 +4,7 @@
     session_start();
     require_once('authenticate.php');
     $uname = $_SESSION["username"];
-    $conn = new mysqli("localhost","root","","apartments");
+    include("../Assets/dbconnect.php");
 ?>
 
 <!DOCTYPE html>

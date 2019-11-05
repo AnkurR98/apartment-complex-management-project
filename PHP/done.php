@@ -15,7 +15,7 @@
     $password = "";
     $dbName = "apartments";
     
-    $conn = new mysqli($serverName,$userName,$password,$dbName);
+    include("../Assets/dbconnect.php");
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')    {
         $block = $_POST['Block'];

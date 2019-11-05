@@ -10,7 +10,7 @@ $t = time();
 
 <?php
     // echo $_POST['Toggler'];
-    $conn = new mysqli("localhost","root","","apartments");
+    include("../Assets/dbconnect.php");
     if($_SERVER['REQUEST_METHOD']=='POST')  {
         if($_POST['Toggler'] == 'Assignment')   {
             // echo count($_POST)."<br>";

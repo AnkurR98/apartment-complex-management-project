@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $dbName = "apartments";
 
         // Create connection
-        $conn = new mysqli($serverName, $userName, $password, $dbName);
+        include("../Assets/dbconnect.php");
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);

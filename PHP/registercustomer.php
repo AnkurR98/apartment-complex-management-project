@@ -9,7 +9,7 @@ $uname = $_SESSION["username"];
     $_SESSION['isregister'] = "show";
     $listing = "";
     $managing = "";
-    $conn = new mysqli("localhost","root","","apartments");
+    include("../Assets/dbconnect.php");
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')    {
         if($_POST['Toggler']=="listing")    {
@@ -92,6 +92,9 @@ $uname = $_SESSION["username"];
 
     <div class="container-fluid" style="margin-top:20px;">
         <div class="accordion" id="accordionExample">
+        <div class="card">
+    
+    </div>
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">

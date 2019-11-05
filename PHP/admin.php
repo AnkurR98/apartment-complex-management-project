@@ -18,7 +18,7 @@
     $emailId = $_SESSION['email'];
     // echo $emailId;
 
-    $conn = new mysqli($hostName,$userName,$password,$dbName);
+    include("../Assets/dbconnect.php");
 
     date_default_timezone_set('Asia/Kolkata');
 

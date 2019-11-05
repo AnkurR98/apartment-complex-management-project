@@ -13,7 +13,7 @@
         $password = "";
         $dbName = "apartments";
 
-        $conn = new mysqli($hostName,$userName,$password,$dbName);
+        include("../Assets/dbconnect.php");
 
         $title = $_POST['Title'];
         $fname = $_POST['Name'];

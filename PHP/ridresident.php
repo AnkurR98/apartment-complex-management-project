@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli("localhost","root","","apartments");
+    include("../Assets/dbconnect.php");
     
     $resid = $_GET['resid'];
     
