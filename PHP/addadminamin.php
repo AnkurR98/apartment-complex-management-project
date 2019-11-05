@@ -8,11 +8,11 @@
         $name = $_POST['Name'];
         $email = $_POST['Email'];
         // echo $name.$email;
-        $password = $_POST['Password'];
+        $password = sha1($_POST['Password']);
         $_SESSION['Email'] = "$email";
         $_SESSION['Name'] = "$name";
         $adminemail = $_POST['AdminEmail'];
-        $adminpassword = $_POST['AdminPassword'];
+        $adminpassword = sha1($_POST['AdminPassword']);
         $time = 0;
         $result = $conn->query("SELECT * FROM ADMIN WHERE EMAIL = '$email'");
         echo $conn->error;

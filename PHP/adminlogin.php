@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if(!empty($_POST["emailId"]) && !empty($_POST["password"])) {
         $emailId = $_POST["emailId"];
-        $passwd = $_POST["password"];
+        $passwd = sha1($_POST["password"]);
         $serverName = "localhost";
         $userName = "root";
         $password = "";
