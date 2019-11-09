@@ -15,13 +15,14 @@ $t = time();
         if($_POST['Toggler'] == 'Assignment')   {
             // echo count($_POST)."<br>";
             $id = $_POST['Comp_Id'];
-            $subject = $_POST['Subject'];
+            $subject = $_POST['NewCategory'];
             $handler = $_POST['Handler'];
             $phone = $_POST['HandlerPhone'];
-            // echo $id.$subject.$handler.$phone;
+            //echo $id.$subject.$handler.$phone;
             date_default_timezone_set("Asia/Kolkata");
             $t = time();
             $conn->query("INSERT INTO COMP_RESOLUTION(COMPLAINT_ID, COMP_SUBJECT, COMP_HANDLER, HANDLER_PHONE, TIMESTAMP) VALUES($id,'$subject','$handler',$phone,$t)");
+            $conn->query("UPDATE COMPLAINTS SET SUBJECT = '$subject', TIMESTAMP = '$t' WHERE COMPLAINT_ID = '$id'");
         }
         else if($_POST['Toggler'] == 'Drop')    {
             $id = $_POST['Comp_Id'];
@@ -125,12 +126,33 @@ $t = time();
                 <div class=\"form-group col-md-6\">
                 <label for=\"exampleFormControlSelect1\">Complaint ID</label>
                     <input type=\"text\" class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"Comp_Id\" value=\"".$row['COMPLAINT_ID']."\" readonly>
+                </div>";
+                
+                $category = $gen = $wet = $dry = $dri = $oth = "";
+                $category = $row['SUBJECT'];
+                if($category == "General")
+                    $gen = "selected";
+                else if($category == "Wet Repairs")
+                    $wet = "selected";
+                else if($category == "Dry Repairs")
+                    $dry = "selected";
+                else if($category == "Drinking Water")
+                    $dri = "selected";
+                else 
+                    $oth = "selected";
+                echo "<div class=\"form-group col-md-6\">
+                <label for=\"exampleFormControlSelect1\">Reconfigure Category</label>
+                <select class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"NewCategory\">
+                    <option value=\"General\" $gen>GENERAL</option>
+                    <option value=\"Wet Repairs\" $wet>WET REPAIRS</option>
+                    <option value=\"Dry Repairs\" $dry>DRY REPAIRS</option>
+                    <option value=\"Drinking Water\" $dri>DRINKING WATER</option>
+                    <option value=\"Others\" $oth>OTHERS</option>
+                </select>
+            </div>
                 </div>
-                <div class=\"form-group col-md-6\">
-                <label for=\"exampleFormControlSelect1\">Complaint Subject</label>
-                    <input type=\"text\" class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"Subject\" value=\"".$row['SUBJECT']."\" readonly>
-                </div>
-                </div>
+                
+                
                 <div class=\"form-group\">
                 <label for=\"exampleFormControlSelect1\">Name of handler</label>
                     <input class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"Handler\">
@@ -201,7 +223,7 @@ $t = time();
     <?php
     while($row1 = $results2->fetch_assoc())  {
         echo "<tr><td>".$row1['COMPLAINT_ID']."</td><td>".$row1['NAME']."&nbsp Block: ".$row1['APT_BLOCK']."&nbsp Apt: ".$row1['APT_NUM']."</td>
-        <td>".$row1['SUBJECT']."</td><td>".$row1['COMP_BODY']."</td><td>".$row1['COMP_HANDLER']."</td><td>".$row1['HANDLER_PHONE']."</td><td>
+        <td>".$row1['COMP_SUBJECT']."</td><td>".$row1['COMP_BODY']."</td><td>".$row1['COMP_HANDLER']."</td><td>".$row1['HANDLER_PHONE']."</td><td>
             <input type=\"hidden\" name=\"Comp_ID\" value=\"".$row1['COMPLAINT_ID']."\">
             <button class=\"btn btn-info\" data-toggle=\"modal\" data-target=\"#resolveModal".$row1['COMPLAINT_ID']."\">THE WORK IS DONE!</button>
 

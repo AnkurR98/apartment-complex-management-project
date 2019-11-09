@@ -206,19 +206,19 @@ $conn->close();
                         if($_SESSION['ischeck'] === true && $_SESSION['isfound'] === false)
                             echo "Your complaint could not be found. Sorry.";
                         else if($_SESSION['ischeck'] === true && $_SESSION['isfound'] === true)   {
-                            echo "Your complaint ID : ".$_SESSION['compid']." having subject : ".$_SESSION['subject']." filed on ".$_SESSION['date_filed']." has the status : ".$_SESSION['status'].".";
+                            echo "Your complaint ID'd <u>".$_SESSION['compid']."</u> categorized as <u>".$_SESSION['subject']."</u> filed on <u>".$_SESSION['date_filed']."</u> has the status <u>".$_SESSION['status']."</u>.";
                             if($_SESSION['status'] === "RESOLVED" || $_SESSION['status'] === "DROPPED")  {
                             echo "<details>
                             <summary>More details about your complaint --></summary>
-                                <p style=\"margin-top: 30px\">The aforementioned action was taken on : ".$_SESSION['date']."</p>
+                                <p style=\"margin-top: 30px\">The aforementioned action was taken on <u>".$_SESSION['date']."</u></p>
                                 <p>".$reopenmsg."</p>
                             </details>";
                             }
                             else if($_SESSION['status'] === "SCHEDULED FOR RESOLUTION"){
                             echo "<details>
                             <summary>More details about your complaint --></summary>
-                                <p style=\"margin-top: 30px\">The aforementioned action was taken on : ".$_SESSION['date']."<br>
-                                <p>Your complaint is being handled by : ".$_SESSION['handler'].". Reach out to him in case of doubts at : ".$_SESSION['handlerphone']."</p>
+                                <p style=\"margin-top: 30px\">The aforementioned action was taken on <u>".$_SESSION['date']."</u><br>
+                                <p>Your complaint is being handled by <u>".$_SESSION['handler']."</u>. Reach out to him in case of questions at <u>".$_SESSION['handlerphone']."</u></p>
                             </details>";
                             }
                         }

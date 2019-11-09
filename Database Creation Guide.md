@@ -79,7 +79,7 @@ CREATE TABLE `resident` (
 
 <br /><br />
 
-<h1><u>DATABASE INDEXES</u></h1>
+<h1><u>DATABASE INDICES</u></h1>
 
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`SL_NO`),

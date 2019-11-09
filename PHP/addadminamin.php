@@ -34,7 +34,8 @@
 <body>
     <div class="jumbotron" style="margin-top: 50px;">
         <p class="lead">Wrong admin credentials. Rolling back changes....</p>
-        <?php header("Refresh: 5; url=adminlogin.php"); ?>
+        <center><img src='https://pics.me.me/naw-rosa-parks-mematic-net-39421382.png' height=500px width=500px></center>
+        <?php header("Refresh: 9; url=adminlogin.php"); ?>
     </div>
 </body>
 
