@@ -50,7 +50,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">I am an Administrator</h5>
-                        <p class="card-text">Manage resident DBs, handle complaints, and view & manage Guests here...</p>
+                        <p class="card-text">Manage resident DBs, handle complaints, and view & manage Goats here...</p>
                         <a class="btn btn-success" href="./PHP/admin.php">Continue as Administrator</a>
                     </div>
                 </div>
