@@ -33,4 +33,14 @@ This is a project done in HTML, CSS and PHP, relying on MySQL for it's Database 
 
 <br />
 
+<h3><strong>Common Bugs/Issues/`"Stepbro I'm stuck!" moments` and how to fix them without freaking out:</strong></h3>
+<ol>
+  <li>Executing apartments.sql but there are issues with charset and collations - Delete the line `DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci` from all the Creation statements given. Simple as;</li>
+  <li>Using DATABASE CREATION GUIDE but you get an unfortunate "Database `apartments` not found/does not exist" - CREATE THE DATABASE. No seriously, create it. Please;</li>
+  <li>I'm doing things on files in PG-50 but they are not displaying in the main webpage - Well, um, it's playground. It is for testing things _without_ affecting the main project. To test things you write in that file, use "localhost/PH-50/playground.<extension>"</li>
+  <li>Did everything properly but "Database connection could not be made: <Error>" - Head to Assets/dbconnect.php and change connection parameters. "admin" is the password I had set for my MySQL installation. Change it to whatever you set. Make it "" if you do not have a password;</li>
+  <li>PHPMyAdmin throws a "Access Denied"/unavailable error - Confirm that the passwords you have set across the ini files are consistent. Make sure MySQL port(3306) and localhost(8080) are not blocked by any other application(most commonly IIS). [For reference, I used 3360 and 8090 respectively];</li>
+  <li>Bizarre input creating unwanted artifacts on the web page: Check if you have changed the code in PHP files somewhere. If not, maybe I have overlooked that input. Let me know, I will fix it if I want to.</li>
+</ol>
+
 <h5>I have not been getting time to work on this due to University and all that. Anyone enthusiastic regarding this project may clone and work on it, maybe to make it better, more efficient, or to overhaul it in general. Or you may use it for your college projects, maybe. You get to decide.</h5>
